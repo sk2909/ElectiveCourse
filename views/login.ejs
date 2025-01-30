@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elective Course Registration</title>
+    <link rel="stylesheet" href="/styles/login.css">
+    <link rel="stylesheet" href="/styles/styles.css">
+
+</head>
+
+<body>
+    <%- include('header.ejs') %>
+
+        <div class="container" id="container">
+            <div class="form-container sign-up-container">
+                <form action="/faculty" method="post">
+                    <h1>Login</h1>
+                    <span>Kindly loin with your credentials</span>
+                    <div class="form-input">
+                        <label for="username">Faculty ID</label>
+                        <input type="text" name="username" placeholder="CS12354" style="text-transform:uppercase"
+                            required />
+                        <label for="password">Password</label>
+                        <input type="date" name="password" required />
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+            <div class="form-container sign-in-container">
+                <form action="/login" method="post">
+                    <h1>Login</h1>
+                    <span>Kindly loin with your USN</span>
+                    <div class="form-input">
+                        <label for="username">USN</label>
+                        <input type="text" name="username" placeholder="USN" size="10" maxlength="10"
+                            style="text-transform:uppercase" required />
+                        <label for="password">Password</label>
+                        <input type="date" name="password" required />
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>Student Login</h1>
+                        <p>Login to register your desired course.</p>
+                        <button class="ghost" id="signIn">Login</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>Admin login</h1>
+                        <p>For Admin Use Only.</p>
+                        <button class="ghost" id="signUp">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+</body>
+<script>
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+
+    signUpButton.addEventListener('click', () => {
+        container.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener('click', () => {
+        container.classList.remove("right-panel-active");
+    });
+
+
+</script>
+
+</html>

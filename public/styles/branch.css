@@ -1,0 +1,74 @@
+.choose {
+    display: flex;
+    flex-direction: column;
+    margin: 0px auto;
+    width: 40%;
+
+}
+
+.choose h2 {
+    margin: 10px 0px;
+    text-align: center;
+}
+
+.choose-select {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5px;
+    margin: 10px 0px;
+    box-shadow: 2px 2px 5px #09070b;
+}
+
+.choose-list,
+.choose-sem-input {
+    border: 1px solid #06030b;
+    border-radius: 5px;
+    padding: 5px;
+    display: none;
+}
+.choose-list-style{
+    display: block;
+    transition: transform 15s linear;
+}
+
+.choose-select p{
+    font-size: 20px;
+    margin: 0px 5px;
+}
+
+.dropdown {
+    background-color: #6D31ED;
+    color: white;
+    border-radius: 100%;
+    padding: 10px;
+}
+
+.choose-branch, .choose-sem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+.choose-submit{
+    display: flex;
+    justify-content: flex-end;
+}
+input[type=submit]{
+    width: 30%;
+    color: white;
+    background-color: #6D31ED;
+    margin: 10px 0px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 0px;
+    font-size: 18px;
+
+}
+
+@media (max-width: 480px){
+    .choose{
+        width: 90%;
+    }
+}

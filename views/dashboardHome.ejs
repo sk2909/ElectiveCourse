@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elective Course Registration</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/dashboardMain.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <section class="background">
+        <form action="/merge" method="post" class="popup">
+            <div class="cancel" onclick="handleCancel()">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="instr">
+                <p>You can merge only two courses at a time.</p>
+                <p>Select one as destination course to which source course details gets merged</p>
+                <h2>Courses:</h2>
+                <ul>
+                    <% for(let course of currentSemCourses){ %>
+                        <li><%= course.courseTitle %> : <%= course.courseCode %> : <%= course.registration %> </li>
+                    <% } %>
+                </ul>
+            </div>
+            <div>
+                <label for="destCode">
+                    Destination Course Code
+                </label>
+                <input type="text" name="destCode" id="destCode" style="text-transform:uppercase">
+            </div>
+            <div>
+                <label for="srcCode">
+                    Source Course Code
+                </label>
+                <input type="text" name="srcCode" id="srcCode" style="text-transform:uppercase">
+            </div>
+            <div>
+                <input type="submit" value="Merge Student Details">
+                <input type="hidden" name="sem" value="<%= currentSem.substring(0,1) %>">
+            </div>
+        </form>
+    </section>
+    <%- include('header.ejs') %>
+        <div class="dashbg">
+            <%- include('sidepanel.ejs') %>
+                <section class="dash">
+                    <h2>Dashboard</h2>
+                    <div class="semSel">
+                        <select id="even-odd">
+                            <option value="odd">Odd Semester</option>
+                            <option value="even">Even Semester</option>
+                        </select>
+                        <input type="submit" value="Get" id="getSem" onclick="handleClick()">
+                    </div>
+                    <section class="semesters">
+                        <div class="oddSem">
+                            <ul>
+                                <form action="/dash" method="post">
+                                    <input type="hidden" name="selectedSemester" id="selectedSemesterOdd">
+                                    <% oddSem.forEach(sem=> { %>
+                                        <input type="submit" id="<%= sem %>" value="<%= sem %>"
+                                            onclick="setSelectedSemester('<%= sem %>')">
+                                        <% }); %>
+                                </form>
+                            </ul>
+
+                        </div>
+                        <div class="evenSem">
+                            <ul>
+                                <form action="/dash" method="post">
+                                    <input type="hidden" name="selectedSemester" id="selectedSemesterEven">
+                                    <% evenSem.forEach(sem=> { %>
+                                        <input type="submit" id="<%= sem %>" value="<%= sem %>"
+                                            onclick="setSelectedSemester('<%= sem %>')">
+                                        <% }); %>
+                                </form>
+                            </ul>
+                        </div>
+                    </section>
+                    <section class="sem-course-heading">
+                        <h3>
+                            <%= currentSem %> Courses
+                        </h3>
+                    </section>
+                    <section class="dash-table">
+                        <table>
+                            <thead>
+                                <tr class="table-header">
+                                    <th class="courseTitle">Course Title</th>
+                                    <th>Course Code</th>
+                                    <th>Registrations</th>
+                                    <th>Total Slots</th>
+                                    <th>Reports</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% currentSemCourses.forEach(course=> { %>
+                                    <tr>
+                                        <td class="courseTitle">
+                                            <%= course.courseTitle %>
+                                        </td>
+                                        <td>
+                                            <%= course.courseCode %>
+                                        </td>
+                                        <td>
+                                            <%= course.registration %>
+                                        </td>
+                                        <td>
+                                            <%= course.maxLimit %>
+                                        </td>
+                                        <td>
+                                            <form action="/export" method="post">
+                                                <input type="hidden" name="sem"
+                                                    value="<%= currentSem.substring(0,1) %>">
+                                                <input type="hidden" name="courseTitle"
+                                                    value="<%= course.courseTitle %>">
+                                                <input type="hidden" name="courseCode" value="<%= course.courseCode %>">
+                                                <input type="submit" value="Export" class="export">
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
+                            </tbody>
+                        </table>
+                        <div class="merge-btn-div">
+                            <button onclick="handleMerge()" class="merge-btn">Merge Details</button>
+                        </div>
+                    </section>
+                </section>
+
+
+        </div>
+
+
+</body>
+<script>
+    let getSem = document.getElementById("getSem");
+    let even = document.querySelector(".evenSem");
+    even.style.display = "none";
+    let odd = document.querySelector(".oddSem");
+    odd.style.display = "block";
+    function handleClick() {
+
+        getSem.addEventListener('click', () => {
+            let value = document.getElementById("even-odd").value
+            console.log(value)
+            if (value === "odd") {
+                even.style.display = "none";
+                odd.style.display = "block";
+            } else if (value === "even") {
+                even.style.display = "block";
+                odd.style.display = "none";
+            }
+        })
+    }
+
+
+    function setSelectedSemester(sem) {
+        document.getElementById('selectedSemesterEven').value = sem;
+        document.getElementById('selectedSemesterOdd').value = sem;
+    }
+
+    function handleMerge(){
+        document.querySelector(".popup").style.display = "block";
+        document.querySelector(".background").style.display = "block";
+    }
+
+    function handleCancel(){
+        document.querySelector(".popup").style.display = "none";
+        document.querySelector(".background").style.display = "none";
+    }
+</script>
+
+</html>

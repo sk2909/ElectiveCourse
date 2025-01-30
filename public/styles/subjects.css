@@ -1,0 +1,79 @@
+.select-sub{
+    width: 50%;
+    padding: 10px;
+    margin: 0px auto;
+}
+
+.select-sub h1{
+    margin: 10px 0px 20px;
+    text-align: center;
+}
+
+.select-cont{
+    width: 90%;
+    border: 1px solid #6D31ED;
+    margin: 0px auto;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.select-cont h3{
+    margin: 10px 0px;
+    font-size: 20px;
+}
+
+.select-cont hr{
+    margin: 5px 0px;
+}
+
+.courses{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.course-sel{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+}
+
+.course-select{
+    display: flex;
+    justify-content: space-around;
+    gap: 0px 5px;
+    align-items: center;
+}
+.course-status{
+    color: #26B556;
+    padding: 3px 5px;
+    border-radius: 5px;
+
+}
+
+.sub{
+    display: flex;
+    justify-content: flex-end;
+    gap: 0px 10px;
+}
+
+input[type=submit]{
+    background-color: #6D31ED;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: 0px;
+}
+
+input[type=reset]{
+    border: 0px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+@media (max-width: 480px){
+    .select-sub{
+        width: 100%;
+    }
+}

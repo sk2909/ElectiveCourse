@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elective Course Registration</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/branch.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <%- include('header.ejs') %>
+
+    <div class="choose">
+        <div class="choose-head">
+            <h2>Fill the following Details</h2>
+        </div>
+        <form action="/branch" method="post">
+            <div class="choose-input">
+                <div class="choose-select" id="branch">
+                    <p>Select your Branch</p>
+                    <i class="fa-solid fa-chevron-down dropdown" ></i>                
+                </div>
+                <div class="choose-list">
+                    <div class="choose-branch">
+                        <label for="branch">Computer Science and Engineering</label>
+                        <input type="radio" name="branch" value="CS">
+                    </div>
+                    <div class="choose-branch">
+                        <label for="branch">Civil Engineering</label>
+                        <input type="radio" name="branch" value="CV">
+                    </div>
+                    <div class="choose-branch">
+                        <label for="branch">Mechanical Engineering</label>
+                        <input type="radio" name="branch" value="ME">
+                    </div>
+                    <div class="choose-branch">
+                        <label for="branch">Electrical and Electronics Engineering</label>
+                        <input type="radio" name="branch" value="EE">
+                    </div>
+                    <div class="choose-branch">
+                        <label for="branch">Electronics and Communication Engineering</label>
+                        <input type="radio" name="branch" value="EC">
+                    </div>
+                    <div class="choose-branch">
+                        <label for="branch">Electrical and Instrumentation Engineering</label>
+                        <input type="radio" name="branch" value="EI">
+                    </div>
+                    <div class="choose-branch">
+                        <label for="branch">Information Science and Engineering</label>
+                        <input type="radio" name="branch" value="IS">
+                    </div>
+                    <div class="choose-branch">
+                        <label for="branch">Computer Science and Engineering (AI & ML)</label>
+                        <input type="radio" name="branch" value="AI">
+                    </div>
+                    <div class="choose-branch">
+                        <label for="branch">Computer Science and Business Systems</label>
+                        <input type="radio" name="branch" value="CB">
+                    </div>
+                </div>
+            </div>
+            <div class="choose-input-sem">
+                <div class="choose-select">
+                    <p>Select your semester</p>
+                    <i class="fa-solid fa-chevron-down dropdown" id="sem"></i>
+                </div>
+                <div class="choose-sem-input">
+                    <div class="choose-sem">
+                        <label for="sem">1st Semester</label>
+                        <input type="radio" name="sem" value="1">
+                    </div>
+                    <div class="choose-sem">
+                        <label for="sem">2nd Semester</label>
+                        <input type="radio" name="sem" value="2">
+                    </div>
+                    <div class="choose-sem">
+                        <label for="sem">3rd Semester</label>
+                        <input type="radio" name="sem" value="3">
+                    </div>
+                    <div class="choose-sem">
+                        <label for="sem">4th Semester</label>
+                        <input type="radio" name="sem" value="4">
+                    </div>
+                    <div class="choose-sem">
+                        <label for="sem">5th Semester</label>
+                        <input type="radio" name="sem" value="5">
+                    </div>
+                    <div class="choose-sem">
+                        <label for="sem">6th Semester</label>
+                        <input type="radio" name="sem" value="6">
+                    </div>
+                    <div class="choose-sem">
+                        <label for="sem">7th Semester</label>
+                        <input type="radio" name="sem" value="7">
+                    </div>
+                </div>
+                <div class="choose-submit">
+                    <input type="submit" value="Next" >
+                </div>
+                
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    let branch = document.querySelector('#branch i')
+    let sem = document.getElementById('sem')
+
+    branch.addEventListener('click', () => {
+        if(branch.classList.contains('fa-chevron-down')){
+            branch.classList.remove('fa-chevron-down');
+            branch.classList.add('fa-chevron-up');
+        }else{
+            branch.classList.remove('fa-chevron-up');
+            branch.classList.add('fa-chevron-down');
+        }
+        let list = document.querySelector('.choose-list')
+        list.classList.toggle('active')
+        if (list.classList.contains('active')) {
+            list.classList.add('choose-list-style');
+        } else {
+            list.classList.remove('choose-list-style');
+        }
+    })
+
+    sem.addEventListener('click', () => {
+        if(sem.classList.contains('fa-chevron-down')){
+            sem.classList.remove('fa-chevron-down');
+            sem.classList.add('fa-chevron-up');
+        }else{
+            sem.classList.remove('fa-chevron-up');
+            sem.classList.add('fa-chevron-down');
+        }
+        let list = document.querySelector('.choose-sem-input')
+        list.classList.toggle('active')
+        if (list.classList.contains('active')) {
+            list.classList.add('choose-list-style');
+        } else {
+            list.classList.remove('choose-list-style');
+        }
+    })
+</script>
+
+</html>

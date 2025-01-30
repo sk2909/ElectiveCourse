@@ -1,0 +1,62 @@
+.display{
+    width: 50%;
+    margin: 0px auto;
+    text-align: center;
+}
+.display-sub{
+    margin: 20px 0px;
+}
+
+.display-sub h1{
+    margin: 10px 0px;
+}
+
+.display-sub p{
+    margin: 10px 0px;
+    font-size: 25px;
+
+}
+
+.display-sub a{
+    text-decoration: none;
+    background-color: #6D31ED;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    margin: 20px auto;
+    display: block;
+    width: 60%;
+    text-align: center;
+}
+
+.query{
+    padding: 20px;   
+}
+
+.query h3{
+    margin: 10px 0px 15px;
+    font-size: 25px;
+}
+.query p{
+    margin: 10px 0px;
+    font-size: 20px;
+    color: rgb(49, 49, 49);
+}
+
+.faculty{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faculty a{
+    text-decoration: none;
+    color: grey;
+}
+
+@media (max-width: 480px){
+    .display{
+        width: 90%;
+    }
+}

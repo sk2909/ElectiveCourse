@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+}
+
+.head{
+    padding: 20px 30px;
+    display: flex;
+    gap: 0px 20px;
+    align-items: left;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    margin: auto 5px;
+}
+.logo img{
+    width: 75px;
+}
+
+.title h1{
+    margin: 5px 0px;
+}
+
+.title p{
+    margin: 5px 0px;
+}
+
+.sidebar{
+    width: 20%;
+    margin: 10px 20px;
+    border-radius: 10px;
+    background-color: #FAFAFB;
+    padding: 10px;
+    height: 75dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidefac{
+    width: 90%;
+    background-color: white;
+    border-radius: 10px;
+    margin: 10px auto;
+    padding: 20px 10px;
+}
+
+.sideSelect {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+}
+.sideContent{
+    display: flex;
+    align-items: flex-end;
+    margin: 10px 0px;
+}
+
+.sideContent img{
+    filter: grayscale(1);
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.sideContent a{
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.sideContent :hover{
+    color: #6D31ED;
+    scale: 1.05;
+}
+
+.sideLogout{
+    margin: 20px;
+    font-size: 20px;
+}
+
+.sideLogout button{
+    color: black;
+    text-decoration: none;
+    border: none;
+    background-color: #FAFAFB;
+    font-size: 20px;
+}
+
+.sideLogout button:hover{
+    color: #6D31ED;
+    scale: 1.05;
+}
+.dashbg{
+    display: flex;
+    align-content: center;
+
+}
